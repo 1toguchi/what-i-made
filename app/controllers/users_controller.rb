@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end 
 
   def show
-  	@user = User.find(params[:id])
+    @user = current_user
+  	#@user = User.find(params[:id])
     @hours = @user.hours.paginate(page:params[:page])
   end
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      session[:user_id]=@user.id
       redirect_to @user, notice: "登録しました。"
     else
       render "new"
