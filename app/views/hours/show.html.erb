@@ -1,20 +1,16 @@
 <% @page_title = "勉強ログ" %>
 <h1><%= current_user %>さんの勉強ログ</h1>
 
-<% if current_user == @hour.user %>
+<% if current_user == @hour.user_id %>
   <p><%= link_to "編集", [:edit, @hour] %></p>
 <% end %>
 
-<%= Time.strftime("%Y年%m月%d日") %>に<%= current_user %>さんがした内容
+<% time = Time.now %>
+<%= time.strftime("%Y年%m月%d日") %>までに<%= current_user %>さんがした内容
 <%= user.hour.hours %>時間
 <%= user.hour.done %>
 
 
-一週間分の日付順にやったことと時間を並べたい
-<% @user.each do |user| %>
-<td style="text-align: center"><%= user. %></td>
-<td><%= user.bunri == 0 ? "国立" : "私大" %>
-<%= user.bunri == 0 ? "文系" : "理系" %></td>
-<td><%= user.hour.hours %>時間</td>
-  </tr>
-  <% end %>
+<!-- 一週間分の日付順にやったことと時間を並べたい。
+<%= user.hour.hours %>をorder(post_date: :desc).first(7)
+<%= user.hour.done %>をorder(post_date: :desc).first(7)で並び替えればいい？ -->

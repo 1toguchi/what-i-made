@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :entries, dependent: :destroy
+  has_many :hours, dependent: :destroy
   
 
   validates :name, presence: true, length: { maximum: 12, allow_blank: true }

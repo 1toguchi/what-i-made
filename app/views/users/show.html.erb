@@ -14,6 +14,7 @@
   </tr>
   <tr>
     <th>学年</th>
+
     <!-- <td><%= @user.grade == 0 ? "高校三年生" : "浪人生" %></td> -->
   </tr>
   <tr>
@@ -27,7 +28,7 @@
   </tr>
   <tr>
     <th>今週の勉強時間</th>
-    <td></td>
+    <td><%= @user.hours.order("created_at DESC").first(7) %></td>
   </tr>
   <tr>
     <th>今月の勉強時間</th>
@@ -40,7 +41,11 @@
 </table>
 
 
-
+<% if @user.hours.any? %>
+やったこと(<%= @user.hours.count %>件)
+<% render "hours/hours" %>
+<%= will_paginate @hours %>
+<% end %>
 
 
 <!-- <% if current_user %><% else %><p>会員情報はありません。</p> <% end %>-->

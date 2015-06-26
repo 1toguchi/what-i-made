@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #関連付けってモデルでやったことない？
   #attr_accessor :name, :email
   
   def index
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @hours = @user.hours.paginate(page:params[:page])
   end
 
   def new

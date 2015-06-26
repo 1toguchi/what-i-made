@@ -2,26 +2,29 @@ class HoursController < ApplicationController
   before_action :login_required, except: [:index, :show]
 
 #みんなの勉強時間を比較できるようにしたい
+#一週間分の勉強時間の合計を表現するには
+#@user = User.find(params[:id])
+#@hour = @user.hour.order(created_at: :desc).first(7)をsumする？
   def rank
     @users = User.all
-    @hours = @users.hours.order(hours: :desc)    
+    @hours = @users.hours.order(hours: :desc)   
   end
 
 #とりあえずみんなの勉強したものの一覧
-	def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @hours = @users.hours
+   def index
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+        @hours = @users.hours
     else
-      @entries = Hour.all #ここいらなくね？
+      @entries = Hour.all #ここいらない？
     end
-		@hours = Hour.order(released_at: :desc).limit(7) #ここページネーションつけとくべき
-	end
+      @hours = Hour.order(released_at: :desc).limit(7) #ここページネーションつけとくべき
+   end
 
-#それぞれのステータす
-	def show
-		@hour = Hour.find(params[:id])
-	end
+#生徒それぞれのステータス
+  def show
+    @hour = Hour.find(params[:id])
+  end
 
 	def new
 		@hour = Hour.new
@@ -33,10 +36,12 @@ class HoursController < ApplicationController
 
 	def create
     @hour = Hour.new(params[:hour])
+    @user = @user.hour
+
     if @hour.save
-      redirect_to @hour, notice: "勉強時間を登録しました。"
+      redirect_to @user, notice: "勉強時間を登録しました。"
     else
-      render "new"
+      render root_path
     end
   end
 		
