@@ -1,0 +1,20 @@
+<% @page_title = "勉強ログ" %>
+<h1><%= current_user %>さんの勉強ログ</h1>
+
+<% if current_user == @hour.user %>
+  <p><%= link_to "編集", [:edit, @hour] %></p>
+<% end %>
+
+<%= Time.strftime("%Y年%m月%d日") %>に<%= current_user %>さんがした内容
+<%= user.hour.hours %>時間
+<%= user.hour.done %>
+
+
+一週間分の日付順にやったことと時間を並べたい
+<% @user.each do |user| %>
+<td style="text-align: center"><%= user. %></td>
+<td><%= user.bunri == 0 ? "国立" : "私大" %>
+<%= user.bunri == 0 ? "文系" : "理系" %></td>
+<td><%= user.hour.hours %>時間</td>
+  </tr>
+  <% end %>

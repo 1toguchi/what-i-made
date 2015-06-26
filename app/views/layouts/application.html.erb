@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= @page_title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+</head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "HMH", root_path, id: "logo" %>
+          <nav>
+
+          <ul class="nav nav-pills  pull-right">
+           <li role="presentation"><%= link_to "TOP", root_path %></li>
+           <li role="presentation"><%= link_to "このサイトについて", about_path %></li>
+           <li role="presentation"><%= link_to "ランキング", rank_path %></li>
+           
+           <% unless current_user %>
+           <li role="presentation"><%= link_to "ログイン", :sessions %></li>
+            <% else %>
+           <li role="presentation"><%= link_to "マイページ", show_path %></li>
+           <li role="presentation"><%= link_to "勉強時間を記録", hours_new_path %></li>
+           <li role="presentation"><%= link_to "ログアウト",  sessions_destroy_path,
+                method: "delete", data: { confirm: "ログアウトしますか？" } %></li>
+
+          
+
+           <% end %>
+
+
+          </ul>
+
+    
+
+
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+    <br><br><br>
+      <%= yield %>
+    </div>
+  </body>
+</html>

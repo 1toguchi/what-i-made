@@ -1,0 +1,37 @@
+<%  @page_title = "総合ランキング" %>
+<h1><%=  @page_title %></h1>
+
+<% if @users.present? %>
+
+
+<table class="list", border="5" rules="rows">
+  <tr>
+    
+    <th>順位</th>
+    <th>ユーザー名</th>
+    <th>国公立/私立</th>
+    <!-- <th>今週の勉強時間</th> -->
+    
+
+
+  </tr>
+  <% @users.each do |user, i| %>
+
+  <tr>
+    <td><%= "#{i}位" %></td>
+
+    <td style="text-align: center"><%= link_to user.name, user %></td>
+    <td><%= user.choice == 0 ? "私立" : "国立" %>
+    <%= user.bunri == 0 ? "文系" : "理系" %></td>
+    
+    <td>
+      <%= link_to "編集",[:edit,user] %>
+      <%= link_to "削除", user , method: :delete,
+         data: {confirm: "本当に削除しますか？"} %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% else %>
+<p>生徒がいません。</p>
+<% end %>

@@ -1,0 +1,53 @@
+<%= render "shared/errors", obj: @user %>
+<table class="attr">
+
+  <tr>
+    <th><%= form.label :name %></th>
+    <td><%= form.text_field :name, size: 15 %></td>
+  </tr>
+ 
+  <tr>
+    <th><%= User.human_attribute_name(:grade) %></th>
+    <td>
+      <% options =[ ["高校一年生",0],["高校二年生",1],["高校三年生",2],["浪人生",3] ]%>
+      <%= form.select :grade, options %>
+    </td>
+  </tr>
+
+    <tr>
+    <th><%= User.human_attribute_name(:choice) %></th>
+    <td>
+      <% options = [["国立",0],["私立",1]] %>
+      <%= form.select :choice, options %>
+    </td>
+  </tr>
+
+    <tr>
+    <th><%= User.human_attribute_name(:bunri) %></th>
+    <td>
+      <% options = [["文系",0],["理系",1]] %>
+      <%= form.select :bunri, options %>
+    </td>
+  </tr>
+
+    <tr>
+    <th><%= User.human_attribute_name(:email) %></th>
+    <td>
+      <%= form.text_field :email, size: 15 %>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= form.label :password %></th>
+    <td><%= form.password_field :password, size: 16 %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :password_confirmation %></th>
+    <td><%= form.password_field :password_confirmation, size: 16 %></td>
+  </tr>
+
+</table>
+
+<% unless @user.new_record? %>
+<p>パスワードを変更しないなら、入力欄に何も入れないでください。</p>
+<% end %>

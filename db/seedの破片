@@ -1,0 +1,11 @@
+User.create(id: 1, name: "takaseya", email: "takaseya@hoge.com", grade: 3, bunri: 1, choice: 1, password: "password", password_confirmation: "password")
+User.create(id: 2, name: "moko", email: "moko@hoge.com", grade: 3, bunri: 1, choice: 1, password: "password", password_confirmation: "password")
+User.create(id: 3, name: "hoge", email: "hoge@hoge.com", grade: 3, bunri: 1, choice: 1, password: "password", password_confirmation: "password")
+User.create(id: 4, name: "foo", email: "foo@hoge.com", grade: 3, bunri: 1, choice: 1, password: "password", password_confirmation: "password")
+
+Hour.create(hours: 12 , post_date: "2015-06-25", user_id: 1, done: "英語をがんばった")
+Hour.create(hours: 10 , post_date: "2015-06-22", user_id: 3, done: "英語をがんばった")
+Hour.create(hours: 6 , post_date: "2015-06-23", user_id: 2, done: "国語をがんばった")
+Hour.create(hours: 15 , post_date: "2015-06-23", user_id: 4, done: "英語をがんばった")
+Hour.create(hours: 12 , post_date: "2015-06-24", user_id: 1, done: "歴史をがんばった!!")
+Hour.create(hours: 9 , post_date: "2015-06-25", user_id: 3, done: "英語をがんばった")

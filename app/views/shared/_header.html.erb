@@ -1,0 +1,19 @@
+<div align="right">
+<div class= "menubar">
+<%= menu_link_to "TOP", root_path %>
+&nbsp;|&nbsp;<%= menu_link_to "このサイトについて", about_path %>
+&nbsp;|&nbsp; <%= menu_link_to "ランキング" , :index %>
+<% if current_member %>
+&nbsp;|&nbsp; <%= menu_link_to "勉強時間を記録する" , :new_hour %>
+&nbsp;|&nbsp; <%= menu_link_to "勉強時間一覧" , :hours %>
+<% end %>
+&nbsp;|&nbsp;
+
+<% if current_member %>
+
+<p class="member">
+<%= current_member.name %>さん |
+<%= link_to "ログアウト", :session, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+<% end %>
+</p>
+</div>

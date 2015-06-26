@@ -1,0 +1,29 @@
+<% @page_title = "勉強時間" %>
+<h1><%= @page_title %></h1>
+
+<p><%= link_to "新しく勉強時間を記録する", :new_hour %></p>
+
+
+<% if @hour.present? %>
+  <table class="list">
+    <tr>
+      <th>勉強時間</th>
+      <th>日時</th>
+      <th>何をしたか</th>
+      <th>操作</th>
+    </tr>
+    <% @hour.each do |h| %>
+    <tr>
+      <td><%= h.hours %></td>
+      <td><%= h.done %></td>
+      <td><%= h.post_date.strftime("%Y/%m/%d") %></td>
+      <td>
+        <%= link_to "削除", @hour, method: :delete,
+          data: { confirm: "本当に削除しますか?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+<p>勉強時間の記録がまだありません。</p>
+<% end %>

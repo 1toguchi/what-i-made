@@ -1,0 +1,32 @@
+<%  @page_title = "ランキング" %>
+<h1><%=  @page_title %></h1>
+
+<% if @users.present? %>
+
+<%= %>
+<table class="list">
+  <tr>
+    
+    <th>順位</th>
+    <th>ユーザー名</th>
+    <th>文系/理系</th>
+    <th>今週の勉強時間</th>
+
+
+  </tr>
+ 
+  <tr>
+    <td><%= "#{i}位" %></td>
+    <% @users.each do |user| %>
+    <td style="text-align: center"><%= user.name %></td>
+    <td><%= user.bunri == 0 ? "国立" : "私大" %>
+    <%= user.bunri == 0 ? "文系" : "理系" %></td>
+    <td><%= user.hour.hours %>時間</td>
+  </tr>
+  <% end %>
+</table>
+
+
+<% else %>
+<p>生徒がいません。</p>
+<% end %>

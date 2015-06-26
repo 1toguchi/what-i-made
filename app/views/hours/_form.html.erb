@@ -1,0 +1,23 @@
+<%= render "shared/errors", obj: @hour %>
+
+<table class="attr">
+
+
+  <tr>
+    <th><%= form.label :hours %></th>
+    <td><%= form.text_field :hours, size: 5,placeholder: "半角数字で入力してください" %></td>
+  </tr>
+
+  <tr>
+    <th><%= form.label :post_date, for: "hour_post_date_1i" %></th>
+    <td><%= form.date_select :post_date,
+              start_year: 2015, end_year: Time.now.year,
+              use_month_numbers: true %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :done %></th>
+    <td><%= form.text_field :done, size: 10 ,placeholder: "例) 英語6h 数学2h" %></td>
+  </tr>
+  <%= form.hidden_field :user_id, :value => @user_id %>
+
+</table>

@@ -1,0 +1,15 @@
+<% @page_title = "Top" %>
+
+
+
+<% unless current_user %>
+<p>How many hours?で勉強のライバルを探そう！</p>
+あなたもHMHで勉強時間の記録をしませんか？
+<%= link_to "新規登録", :new_user %>/
+<%= link_to "ログイン", sessions_path , method: "post" %>
+<% else %>
+<%= current_user.name %>さんこんにちは。
+
+勉強のログを記録するなら<%= link_to "こちら", hours_new_path %>
+
+<% end %>
