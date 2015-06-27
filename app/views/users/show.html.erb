@@ -14,9 +14,18 @@
   </tr>
   <tr>
     <th>学年</th>
+    <td>
+    <% if @user.grade = 0 %>
+    <%= "高校一年" %>
+    <% elsif @user.grade = 1 %>
+    <%= "高校二年" %>
+    <% elsif @user.grade = 2 %>
+    <%= "高校二年" %>
+    <% else %>
+    <%= "浪人生" %>
+    <% end %>
+    </td>
 
-
-    <!-- <td><%= @user.grade == 0 ? "高校三年生" : "浪人生" %></td> -->
   </tr>
   <tr>
     <th>志望校(国立/私立)</th>
@@ -28,26 +37,27 @@
     <td><%= @user.bunri == 0 ? "文系" : "理系"  %></td>
   </tr>
   <tr>
-    <th>今週の勉強時間</th>
-    <td><%= @user.hours.order("created_at DESC").first(7) %></td>
+    <th>今日から一週間前までの勉強時間の合計</th>
+    <td><%= @user.sum_by_a_week %>時間</td>
   </tr>
   <tr>
-    <th>今月の勉強時間</th>
-    <td></td>
+    <th>今日から一ヶ月前までの勉強時間の合計</th>
+    <td><%= @user.sum_by_a_month %>時間</td>
   </tr>
   <tr>
     <th>総勉強時間</th>
-    <td></td>
+    <td><%= @user.hours.sum(:hours) %>時間</td>
   </tr>
 </table>
 
 
 <% if @user.hours.any? %>
 やったこと(<%= @user.hours.count %>件)
-<% render "hours/hours" %>
+<%= render "hours/hours" %>
 <%= will_paginate @hours %>
 <% end %>
 
 
-<!-- <% if current_user %><% else %><p>会員情報はありません。</p> <% end %>-->
+
+ <% if current_user %><% else %><p>会員情報はありません。</p> <% end %>
 

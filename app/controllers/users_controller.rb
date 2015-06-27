@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  #関連付けってモデルでやったことない？
-  #attr_accessor :name, :email
   
   def index
   	@user = User.all
@@ -8,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-  	#@user = User.find(params[:id])
     @hours = @user.hours.paginate(page:params[:page])
   end
 
@@ -43,9 +40,4 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to :users, notice: "削除しました。"
   end
-
-   # private
-    # def user_params
-      # params.require(:user).permit(:name, :email, :password,:password_confirmation)
-    # end
 end
