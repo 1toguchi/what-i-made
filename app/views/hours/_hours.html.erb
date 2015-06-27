@@ -1,15 +1,17 @@
-<table class="attr", border="5" rules="all">
+<table class="table table-hover", border="1" rules="all">
 <% @user.hours.each do |hour| %>
   <tr>
     <th>勉強内容</th>
     <th>日付</th>
     <th>勉強時間</th>
+    <th>操作</th>
     
   </tr>
   <tr> 
     <td><%= hour.done %></td>
     <td><%= hour.post_date %></td>
     <td><%= hour.hours %></td>
+    <td><%= link_to "削除", hour, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
   </tr>
 
   <% end %>

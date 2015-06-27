@@ -1,10 +1,10 @@
-<%  @page_title = "ランキング" %>
-<h1><%=  @page_title %></h1>
+<% @page_title = "ランキング" %>
+<h3><%= @page_title %></h3>
 
 <% if @user.present? %>
 
 <%= %>
-<table class="list">
+<table class="table table-hover", border="1">
   <tr>
     
     <th>順位</th>
@@ -12,26 +12,18 @@
     <th>今週の勉強時間</th>
     <th>私立/国立</th>
     <th>文系/理系</th>
-
-
-
-
   </tr>
  
   <tr>
     <% @user.sort{|a,b| b[1]<=>a[1] }.each.with_index do |user, i| %>
     <td><%= "#{i+1}位" %></td>
-    <td><%= "#{user.name}さん" %></td>
+    <td><%=  "#{user.name}さん" %></td>
     <td><%= "#{user.hours}時間" %></td>
     <td><%= user.choice == 0 ? "国立" : "私立" %></td>
     <td><%= user.bunri == 0 ? "文系" : "理系"  %></td>
   </tr>
     <% end %>
-
-
 </table>
-
-
 <% else %>
 <p>生徒がいません。</p>
 <% end %>

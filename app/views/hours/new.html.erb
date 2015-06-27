@@ -1,7 +1,33 @@
 <% @page_title = "勉強時間を新しく投稿する" %>
-<h1><%= @page_title %></h1>
+<h3><%= @page_title %></h3>
 
 <%= form_for @hour do |form| %>
-<%= render "form", form: form %>
-<p><%= form.submit %></p>
+<%= render "shared/errors", obj: @hour %>
+
+<table class="attr" >
+
+
+  <tr>
+    <th><%= form.label :hours %></th>
+    <td><%= form.text_field :hours, size: 5,placeholder: "半角数字のみで入力してください" %></td>
+  </tr>
+
+  <tr>
+    <th><%= form.label :post_date, for: "hour_post_date_1i" %></th>
+    <td><%= form.date_select :post_date,
+              start_year: 2015, end_year: Time.now.year,
+              end_month: Time.now.month,end_day: Time.now.day,
+              use_month_numbers: false %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :done %></th>
+    <td><%= form.text_field :done, size: 10 ,placeholder: "例) 英語6h 数学2h" %></td>
+  </tr>
+
+
+</table>
+
+<form>
+<button class="btn btn-primary" input type = "submit">ログを記録する</button>
+</form>
 <% end %>

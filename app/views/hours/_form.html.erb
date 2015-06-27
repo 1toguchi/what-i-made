@@ -12,7 +12,8 @@
     <th><%= form.label :post_date, for: "hour_post_date_1i" %></th>
     <td><%= form.date_select :post_date,
               start_year: 2015, end_year: Time.now.year,
-              use_month_numbers: true %></td>
+              end_month: Time.now.month,end_day: Time.now.day,
+              use_month_numbers: false %></td>
   </tr>
   <tr>
     <th><%= form.label :done %></th>

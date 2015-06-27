@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @hours = @user.hours.paginate(page:params[:page])
+    @hours = @user.hours.paginate(page: params[:page], per_page: 10)
   end
 
   def new

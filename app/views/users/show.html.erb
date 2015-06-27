@@ -1,13 +1,7 @@
 <% @page_title = "生徒のプロフィール" %>
+<h3><%= @page_title %></h3>
 
-<h1><%= @page_title %></h1>
-
-<h2> 生徒の情報 </h2>
-
-
-
-
-<table class="attr", border="5" rules="rows">
+<table class="table table-hover", border="1">
   <tr>
     <th width="150">名前</th>
     <td><%= @user.name %></td>

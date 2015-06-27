@@ -1,9 +1,10 @@
-<h1>Log in</h1>
+<% @page_title = "ログイン" %>
+<h3><%= @page_title %></h3>
 <% if flash.alert %><p class="alert"><%= flash.alert %></p><% end %>
 <%= form_tag sessions_path do %>
-<div class=field><%= label_tag :name, 'login name' %>
+<div class=field><%= label_tag :name, '名前' %>
 <%= text_field_tag :name, params[:name] %> </div>
-<div class=field><%= label_tag :password, 'password' %>
+<div class=field><%= label_tag :password, 'パスワード' %>
 <%= password_field_tag :password , params[:password]%> </div>
 <div class=actions><%= submit_tag "ログイン" %> </div>
 <% end %>
