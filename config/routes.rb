@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get "about" => "top#about", as: "about"
   get "show" => "users#show", as: "show"
   get "new" => "hours#new", as: "hours_new"
-  get "rank" => "hours#rank", as: "rank"
+  get "rank" => "users#rank", as: "rank"
 
 end

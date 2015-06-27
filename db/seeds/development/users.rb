@@ -1,4 +1,4 @@
-names = %w[hoge hoge hoge]
+names = %w[hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge ]
 
 0.upto(9) do |idx|
   user = User.create(

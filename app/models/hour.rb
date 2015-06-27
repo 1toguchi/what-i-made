@@ -3,8 +3,17 @@ class Hour < ActiveRecord::Base
 	validates  :hours, numericality: { less_than: 18 }
 	validates  :hours, numericality: { only_integer: true }
 	validates  :done, length: { maximum: 50 }
-	validates  :post_date, uniqueness: true
+	validates  :post_date, uniqueness: { scope: %i(user_id) }
+
 	validates  :user_id, presence: true
+
+
+   class << self
+   
+	def goukei
+	  self.hours.a_week.sam(:hours)
+	end
+   end
 
     scope :a_week, -> {
     now = Date.today

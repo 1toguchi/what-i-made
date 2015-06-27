@@ -9,21 +9,20 @@
     
     <th>順位</th>
     <th>ユーザー名</th>
-    <th>文系/理系</th>
     <th>今週の勉強時間</th>
 
 
   </tr>
  
   <tr>
-    <td><%= "#位" %></td>
-    <% @users.rank.each do |user| %>
-    <td style="text-align: center"><%= user.name %></td>
-    <td><%= user.bunri == 0 ? "国立" : "私大" %>
-    <%= user.bunri == 0 ? "文系" : "理系" %></td>
-    <td><%= user.hour.hours %>時間</td>
+    <% @user.each.with_index do |user, i| %>
+    <td><%= "#{i+1}位" %></td>
+    <td><%= " #{user.name}さん" %></td>
+    <td><%= "#{user.hours.freeze}時間" %></td>
   </tr>
-  <% end %>
+    <% end %>
+
+
 </table>
 
 

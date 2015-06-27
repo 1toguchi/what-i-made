@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  def rank
+    @user = User.all    
+  end
+
   def index
   	@user = User.all
   end 

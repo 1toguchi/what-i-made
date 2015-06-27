@@ -15,15 +15,15 @@ class User < ActiveRecord::Base
   validates :password, :confirmation => true
   validates :password, format: { with: /[A-Za-z]/ }
 
+  def rank
+    self.sum_by_a_week.order(hours: :desc)
+  end
+
   def sum_by_a_week
     self.hours.a_week.sum(:hours)
   end
 
   def sum_by_a_month
     self.hours.a_month.sum(:hours)
-  end
-
-  def grade_str
-    %w(高校一年　高校二年　高校三年　浪人生).at(self.grade)
   end
 end

@@ -1,14 +1,17 @@
 class HoursController < ApplicationController
   before_action :login_required, except: [:index, :show]
 
+
+
+
   def rank
-    @user = User.all
-    @hour = @user.hours.order(hours: :desc)   
+    @user = User.all.map{ |u| [u.name, u.sum_by_a_week] }.sort{ |a,b| b[1]<=>a[1] }.take(10)
+    #@user = User.all.index_by{|user| "#{user.id} #{ user.sum_by_a_week } "}
   end
 
-   def index
-      @hours = Hour.all.order(post_date: :desc)
-   end
+  def index
+    @hours = Hour.all.order(post_date: :desc)
+  end
 
   def show
     if params[:user_id]
