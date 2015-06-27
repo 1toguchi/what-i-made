@@ -3,7 +3,7 @@ class Hour < ActiveRecord::Base
 	validates  :hours, numericality: { less_than: 18 }
 	validates  :hours, numericality: { only_integer: true }
 	validates  :done, length: { maximum: 50 }
-	validates  :post_date, uniqueness: { scope: %i(user_id) }
+	validates  :post_date, uniqueness: {:scope => :user_id}
 
 	validates  :user_id, presence: true
 
