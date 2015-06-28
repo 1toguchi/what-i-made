@@ -8,19 +8,15 @@
   <tr>
     
     <th>順位</th>
-    <th>ユーザー名</th>
-    <th>今週の勉強時間</th>
-    <th>私立/国立</th>
-    <th>文系/理系</th>
+    <th>今週の勉強時間　/ ユーザー名</th>
   </tr>
  
   <tr>
-    <% @user.sort{|a,b| b[1]<=>a[1] }.each.with_index do |user, i| %>
-    <td><%= "#{i+1}位" %></td>
-    <td><%=  "#{user.name}さん" %></td>
-    <td><%= "#{user.hours}時間" %></td>
-    <td><%= user.choice == 0 ? "国立" : "私立" %></td>
-    <td><%= user.bunri == 0 ? "文系" : "理系"  %></td>
+    <% @user.index_by{|h| "#{h.sum_by_a_week} 時間 / #{h.name}さん"}.keys.sort.reverse.each.with_index(1) do |user,i| %>
+    <td><%= "#{i}位" %></td>
+    <td><%=  "#{user}" %></td>
+
+
   </tr>
     <% end %>
 </table>

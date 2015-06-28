@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :password, format: { with: /[A-Za-z]/ }
 
   def rank
-    self.sum_by_a_week.order(hours: :desc)
+    self.sum_by_a_week.order(hours: :desc)    
   end
 
   def sum_by_a_week
@@ -25,4 +25,6 @@ class User < ActiveRecord::Base
   def sum_by_a_month
     self.hours.a_month.sum(:hours)
   end
+
+
 end

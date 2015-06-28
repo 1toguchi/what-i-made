@@ -1,9 +1,6 @@
 class HoursController < ApplicationController
   before_action :login_required, except: [:index, :show]
 
-  def rank
-    @user = User.all.index_by{|user| "#{user.id} #{ user.sum_by_a_week } "}.first(10)
-  end
 
   def index
     @hours = Hour.all.order(post_date: :desc)
