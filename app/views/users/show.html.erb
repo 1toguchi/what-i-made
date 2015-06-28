@@ -49,6 +49,10 @@
 やったこと(<%= @user.hours.count %>件)
 <%= render "hours/hours" %>
 <%= will_paginate @hours %>
+
+<% else %>
+勉強のログがまだありません。
+<%= link_to "ここ", hours_new_path %>から登録しよう！
 <% end %>
 
 
